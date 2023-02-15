@@ -1,1 +1,12 @@
-# Music-Player
+# Music-Player-images
+![Home](https://user-images.githubusercontent.com/65101955/219109883-95596f3a-fffc-4d05-88c2-721270cae271.png)
+![Playlist-1](https://user-images.githubusercontent.com/65101955/219109897-d541863b-e6a9-4193-8ef5-3a410dea6bb3.png)
+![Playlist-2](https://user-images.githubusercontent.com/65101955/219109912-21876b18-6c5e-4c73-835b-f16723bfbb8b.png)
+![Playlist-3](https://user-images.githubusercontent.com/65101955/219109923-4b15f6e5-7843-4c3d-9213-0fae56b42760.png)
+![Playlist-4](https://user-images.githubusercontent.com/65101955/219109931-0f5e2f35-212c-486a-94a5-0e3eedc87646.png)
+![Search-1](https://user-images.githubusercontent.com/65101955/219109979-d10344a0-8ddb-493c-b7f5-e9df17a7ac0c.png)
+![Search-2](https://user-images.githubusercontent.com/65101955/219109993-f77d9289-5a7b-4e8b-8c34-298f9d49c3e1.png)
+![Search-3](https://user-images.githubusercontent.com/65101955/219110002-7b59d3f0-d49a-42ff-936a-8a9864558d61.png)
+![Playlist-5](https://user-images.githubusercontent.com/65101955/219110030-5fdba65a-f763-4048-82a3-cdd6288d5c1a.png)
+![queue](https://user-images.githubusercontent.com/65101955/219110054-dbcdcb37-86a7-49cf-a5a4-aeae115fbf9f.png)
+![Artist](https://user-images.githubusercontent.com/65101955/219110073-77c34b02-1c81-4a64-90c0-b4507beb4eb4.png)
