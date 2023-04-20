@@ -113,18 +113,31 @@ nav ul li{
 }
 
 #audioProgress{
-    min-width: 50vw;
+    width: 80%;
     height: 3px;
     transition: 0.4s all ease-out;
 }
 
+#currentStart{
+    width: 5%;
+}
+#currentEnd{
+    width:5%;
+}
+
 .time-bar{
     margin: 5px;
+    width: 100%;
 }
 
 
 .icons{
     margin: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 i{
