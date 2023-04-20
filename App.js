@@ -27,7 +27,7 @@ class PlaylistStorage{
 let currentSongUrl = ''
 
 const fetchHomeData = async function (){
-    const api = await fetch('http://api.napster.com/v2.2/tracks/top?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0')
+    const api = await fetch('https://api.napster.com/v2.2/tracks/top?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0')
     const result = await api.json()
     return result["tracks"]
 }
@@ -56,7 +56,7 @@ function search(){
             document.querySelector('#search-song-display').setAttribute('style',"display:none;")
             document.querySelector('#search-artist-display').setAttribute('style',"display:none;")
             async function fetchSearchTrack(){
-                const api = await fetch(`http://api.napster.com/v2.2/search?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0&query=${searchValue}&type=track`)
+                const api = await fetch(`https://api.napster.com/v2.2/search?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0&query=${searchValue}&type=track`)
                 const response = await api.json()
                 searchLoaders[0].setAttribute('style',"display:none;")
                 document.querySelector('#search-song-display').setAttribute('style',"display:flex;")
@@ -69,7 +69,7 @@ function search(){
                     const trackContainer = document.querySelector("#search-song-display");
                     const track = document.createElement('div')
                     track.classList.add('searched-song')
-                    track.style.backgroundImage = `url('http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/300x300.jpg')`
+                    track.style.backgroundImage = `url('https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/300x300.jpg')`
                     const span = document.createElement('span')
                     span.classList.add("search-song-name")
                     span.innerHTML = `${trackList[i]["name"]}`
@@ -129,7 +129,7 @@ function search(){
                             currentSongUrl = trackList[i]["previewURL"]
                             music.play()
                             document.getElementById('player-image-container').style.display = "block"
-                            document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
+                            document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
                             document.querySelector('#songTitle').innerHTML = `${trackList[i]["name"]}`
                             document.querySelector('#artistTitle').innerHTML = `${trackList[i]["artistName"]}`
                             document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -240,7 +240,7 @@ function search(){
                 })
             }
             async function fetchSearchArtist(){
-                const api = await fetch(`http://api.napster.com/v2.2/search?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0&query=${searchValue}&type=artist`)
+                const api = await fetch(`https://api.napster.com/v2.2/search?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0&query=${searchValue}&type=artist`)
                 const response = await api.json()
                 searchLoaders[1].setAttribute('style',"display:none;")
                 document.querySelector('#search-artist-display').setAttribute('style',"display:flex;")
@@ -292,13 +292,13 @@ function search(){
                             playlistDesContainer.innerHTML = `${artistList[i]["blurbs"][0]}`
                             const openPlaylistContainer = document.querySelector('#playlist-open')
                             async function parseArtistSongs(){
-                                const api = await fetch(`http://api.napster.com/v2.2/artists/${artistList[i]["id"]}/tracks/top?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
+                                const api = await fetch(`https://api.napster.com/v2.2/artists/${artistList[i]["id"]}/tracks/top?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
                                 const response = await api.json()
                                 const artistTopSongs = response["tracks"]
                                 openPlaylistContainer.innerHTML = ''
                                 for(let i in artistTopSongs){
                                     openPlaylistContainer.innerHTML += `<div class="playlist-open-each-song" id='artist-open-each-song-${i}'>
-                                                                            <img class="playlist-open-each-song-image" src='http://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[i]["albumId"]}/images/50x50.jpg'>
+                                                                            <img class="playlist-open-each-song-image" src='https://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[i]["albumId"]}/images/50x50.jpg'>
                                                                             <div class="playlist-open-each-song-details">
                                                                                 <span class="playlist-open-each-song-name">${artistTopSongs[i]["name"]}</span>
                                                                                 <span>${artistTopSongs[i]["artistName"]}</span>
@@ -319,7 +319,7 @@ function search(){
                                     currentSongUrl = artistTopSongs[0]["previewURL"]
                                     music.play()
                                     document.getElementById('player-image-container').style.display = "block"
-                                    document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[0]["albumId"]}/images/50x50.jpg`
+                                    document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[0]["albumId"]}/images/50x50.jpg`
                                     document.querySelector('#songTitle').innerHTML = `${artistTopSongs[0]["name"]}`
                                     document.querySelector('#artistTitle').innerHTML = `${artistTopSongs[0]["artistName"]}`
                                     document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -337,7 +337,7 @@ function search(){
                                         currentSongUrl = artistTopSongs[i]["previewURL"]
                                         music.play()
                                         document.getElementById('player-image-container').style.display = "block"
-                                        document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[i]["albumId"]}/images/50x50.jpg`
+                                        document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${artistTopSongs[i]["albumId"]}/images/50x50.jpg`
                                         document.querySelector('#songTitle').innerHTML = `${artistTopSongs[i]["name"]}`
                                         document.querySelector('#artistTitle').innerHTML = `${artistTopSongs[i]["artistName"]}`
                                         document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 const trackContainer = document.querySelector("#home-tracks");
                 const track = document.createElement('div')
                 track.classList.add('tracks')
-                track.style.backgroundImage = `url('http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/300x300.jpg')`
+                track.style.backgroundImage = `url('https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/300x300.jpg')`
                 const div1 = document.createElement('div')
                 div1.classList.add("home-content-div")
                 const span = document.createElement('span')
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         currentSongUrl = trackList[i]["previewURL"]
                         music.play()
                         document.getElementById('player-image-container').style.display = "block"
-                        document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
+                        document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
                         document.querySelector('#songTitle').innerHTML = `${trackList[i]["name"]}`
                         document.querySelector('#artistTitle').innerHTML = `${trackList[i]["artistName"]}`
                         document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -827,13 +827,13 @@ function parsePlaylist(){
             const openPlaylistContainer = document.querySelector('#playlist-open')
             async function parsePlaylistSongs(){
                 if(songList.length){
-                    const api = await fetch(`http://api.napster.com/v2.2/tracks/${query}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
+                    const api = await fetch(`https://api.napster.com/v2.2/tracks/${query}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
                     const response = await api.json()
                     const trackList = response["tracks"]
                     openPlaylistContainer.innerHTML = ''
                     for(let i in trackList){
                         openPlaylistContainer.innerHTML += `<div class="playlist-open-each-song" id='playlist-open-each-song-${i}'>
-                                                                <img class="playlist-open-each-song-image" src='http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg'>
+                                                                <img class="playlist-open-each-song-image" src='https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg'>
                                                                 <div class="playlist-open-each-song-details">
                                                                     <span class="playlist-open-each-song-name">${trackList[i]["name"]}</span>
                                                                     <span>${trackList[i]["artistName"]}</span>
@@ -855,7 +855,7 @@ function parsePlaylist(){
                             currentSongUrl = trackList[0]["previewURL"]
                             music.play()
                             document.getElementById('player-image-container').style.display = "block"
-                            document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[0]["albumId"]}/images/50x50.jpg`
+                            document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[0]["albumId"]}/images/50x50.jpg`
                             document.querySelector('#songTitle').innerHTML = `${trackList[0]["name"]}`
                             document.querySelector('#artistTitle').innerHTML = `${trackList[0]["artistName"]}`
                             document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -873,7 +873,7 @@ function parsePlaylist(){
                             currentSongUrl = trackList[i]["previewURL"]
                             music.play()
                             document.getElementById('player-image-container').style.display = "block"
-                            document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
+                            document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
                             document.querySelector('#songTitle').innerHTML = `${trackList[i]["name"]}`
                             document.querySelector('#artistTitle').innerHTML = `${trackList[i]["artistName"]}`
                             document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -921,7 +921,7 @@ document.getElementById('player-queue').addEventListener('click',()=>{
     
     async function parseQueueData(){
         if(queue.length){
-            const api = await fetch(`http://api.napster.com/v2.2/tracks/${query}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
+            const api = await fetch(`https://api.napster.com/v2.2/tracks/${query}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
             const response = await api.json()
             const trackList = response["tracks"]
             musicURLs = []
@@ -931,7 +931,7 @@ document.getElementById('player-queue').addEventListener('click',()=>{
             queueContainer.innerHTML = ''
             for(let i in trackList){
                 queueContainer.innerHTML += `<div class="queue-open-each-song" id='queue-open-each-song-${i}'>
-                                                <img class="queue-open-each-song-image" src='http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg'>
+                                                <img class="queue-open-each-song-image" src='https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg'>
                                                 <div class="queue-open-each-song-details">
                                                     <span class="queue-open-each-song-name">${trackList[i]["name"]}</span>
                                                     <span>${trackList[i]["artistName"]}</span>
@@ -947,7 +947,7 @@ document.getElementById('player-queue').addEventListener('click',()=>{
                     music.src = trackList[i]["previewURL"]
                     music.play()
                     document.getElementById('player-image-container').style.display = "block"
-                    document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
+                    document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[i]["albumId"]}/images/50x50.jpg`
                     document.querySelector('#songTitle').innerHTML = `${trackList[i]["name"]}`
                     document.querySelector('#artistTitle').innerHTML = `${trackList[i]["artistName"]}`
                     document.querySelector('#player-play').classList.remove('fa-circle-play')
@@ -1095,11 +1095,11 @@ music.addEventListener('ended',()=>{
 })
 
 async function parsePlayerTrack(randomTrack){
-    const api = await fetch(`http://api.napster.com/v2.2/tracks/${queue[randomTrack]}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
+    const api = await fetch(`https://api.napster.com/v2.2/tracks/${queue[randomTrack]}?apikey=ZmFmOTMzZDYtYzU4MC00YjhmLWE0NDQtY2RlYjgxOTljZDE0`)
     const response = await api.json()
     const trackList = response["tracks"]
     document.getElementById('player-image-container').style.display = "block"
-    document.querySelector('#songImage').src = `http://direct.rhapsody.com/imageserver/v2/albums/${trackList[0]["albumId"]}/images/50x50.jpg`
+    document.querySelector('#songImage').src = `https://direct.rhapsody.com/imageserver/v2/albums/${trackList[0]["albumId"]}/images/50x50.jpg`
     document.querySelector('#songTitle').innerHTML = `${trackList[0]["name"]}`
     document.querySelector('#artistTitle').innerHTML = `${trackList[0]["artistName"]}`
     document.querySelector('#player-play').classList.remove('fa-circle-play')
